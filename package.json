@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/alestor123/CALL-CLI/issues"
   },
-  "homepage": "https://github.com/alestor123/CALL-CLI#readme"
+  "homepage": "https://github.com/alestor123/CALL-CLI#readme",
+  "dependencies": {
+    "conf": "^7.1.2",
+    "minimist": "^1.2.5",
+    "twilio": "^3.54.1"
+  }
 }
