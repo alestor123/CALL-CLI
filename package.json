@@ -19,6 +19,7 @@
   "dependencies": {
     "chalk": "^4.1.0",
     "conf": "^7.1.2",
+    "enquirer": "^2.3.6",
     "minimist": "^1.2.5",
     "twilio": "^3.54.1"
   }
