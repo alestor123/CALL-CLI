@@ -4,7 +4,6 @@ var Conf = require('conf'),
 options = require('minimist')(process.argv.slice(2)),
 config = new Conf(),
 chalk = require('chalk'),
-readline = require('readline'),
 inId = options.i || options.id || process.env.SID,
 inNum = options.cn || options.cnumber || process.env.NUM,
 inKey = options.k || options.key || process.env.KEY,
@@ -13,11 +12,7 @@ cnumber = config.get('twilionum'),
 number = options.n || options.number,
 message = options.m || options.message,
 id = config.get('twilioid'),
-key = config.get('twiliokey'),
-rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-  });
+key = config.get('twiliokey');
 if(inId&&inKey){
     console.log('Id : '+inId+'Key: '+inKey + 'Number : ' + inNum )
     config.set('twilionum',inNum);
