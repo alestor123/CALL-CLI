@@ -4,7 +4,6 @@ var Conf = require('conf'),
 options = require('minimist')(process.argv.slice(2)),
 config = new Conf(),
 chalk = require('chalk'),
-{ prompt } = require('enquirer'),
 readline = require('readline'),
 inId = options.i || options.id || process.env.SID,
 inNum = options.cn || options.cnumber || process.env.NUM,
@@ -12,9 +11,9 @@ inKey = options.k || options.key || process.env.KEY,
 twilio = require('twilio'),
 cnumber = config.get('twilionum'),
 number = options.n || options.number,
+message = options.m || options.message,
 id = config.get('twilioid'),
 key = config.get('twiliokey'),
-audio = options.a || options.audio,
 rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
@@ -36,12 +35,7 @@ return false}}
 
 function call(){
 var client = twilio(id,key);
-(async () => {
-var answer = await prompt(  {
-    type: 'input',
-    name: 'message',
-    message: 'Message' }),
-ml = `<Response><Say>${answer.message || 'No Message'} </Say></Response>`;
+ml = `<Response><Say>${message || 'No Message'} </Say></Response>`;
 client.calls
       .create({
         twiml: ml,
@@ -49,7 +43,5 @@ client.calls
          from: cnumber
 })
 .then(call => console.log(`Call Id : ${call.sid}`));
-console.log(`Number ${number} From : ${cnumber} Message : ${answer.message || 'No Message'}`)
-})();
-
+console.log(`Number ${number} From : ${cnumber} Message : ${message || 'No Message'}`)
 }
