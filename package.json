@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "This is a simple code for twilio call ml cli",
   "main": "App.js",
+  "bin": {
+    "call": "App.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
